@@ -1,51 +1,77 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Package } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import ProductCard from "@/components/ProductCard";
-import CartSummary from "@/components/CartSummary";
 import tapeVariety from "@/assets/tape-variety.jpeg";
 
+// Import product images
+import transparentTape from "@/assets/bopp-transparent-tape.png";
+import brownTape from "@/assets/bopp-brown-tape.png";
+import colouredTapes from "@/assets/bopp-coloured-tapes.png";
+import printedTapes from "@/assets/bopp-printed-tapes.png";
+import jumboRolls from "@/assets/bopp-jumbo-rolls.png";
+import stretchFilm from "@/assets/stretch-film.png";
+import strappingRolls from "@/assets/strapping-rolls.png";
+
 const productCategories = [
-  {
-    id: "brown-bopp",
-    title: "Brown BOPP Tapes",
-    description: "Industrial-grade brown tapes perfect for carton sealing and heavy-duty packaging needs.",
-    features: ["High adhesive strength", "Moisture resistant", "Available in multiple widths"],
-  },
   {
     id: "transparent-bopp",
     title: "Transparent BOPP Tapes",
     description: "Crystal clear tapes ideal for clean packaging and labeling applications.",
     features: ["Premium clarity", "Strong bond", "Professional finish"],
+    image: transparentTape,
+  },
+  {
+    id: "brown-bopp",
+    title: "Brown BOPP Tapes",
+    description: "Industrial-grade brown tapes perfect for carton sealing and heavy-duty packaging needs.",
+    features: ["High adhesive strength", "Moisture resistant", "Available in multiple widths"],
+    image: brownTape,
   },
   {
     id: "colored-bopp",
     title: "Colored BOPP Tapes",
     description: "Vibrant colored tapes for coding, identification, and decorative purposes.",
     features: ["Yellow, Blue, Red, Green options", "Bright colors", "Easy identification"],
+    image: colouredTapes,
   },
   {
     id: "printed-bopp",
     title: "Printed BOPP Tapes",
     description: "Custom printed tapes with your brand logo for enhanced branding and security.",
     features: ["Custom designs", "Brand promotion", "Tamper evidence"],
+    image: printedTapes,
   },
   {
-    id: "masking-tapes",
-    title: "Masking Tapes",
-    description: "Easy peel masking tapes for painting, bundling, and temporary fixing.",
-    features: ["Clean removal", "Paint line protection", "Multiple applications"],
+    id: "jumbo-rolls",
+    title: "BOPP Jumbo Rolls",
+    description: "Large format jumbo rolls for high-volume packaging operations and conversions.",
+    features: ["Bulk quantities", "Cost-effective", "Industrial grade"],
+    image: jumboRolls,
   },
   {
-    id: "specialty-tapes",
-    title: "Specialty Tapes",
-    description: "Specialized tapes for specific industrial and commercial applications.",
-    features: ["Custom solutions", "Industrial grade", "Application specific"],
+    id: "stretch-film",
+    title: "Stretch Film",
+    description: "Protective stretch wrap for bundling and securing items during storage and transport.",
+    features: ["Superior cling", "Puncture resistant", "Multiple thicknesses"],
+    image: stretchFilm,
+  },
+  {
+    id: "strapping-rolls",
+    title: "Strapping Rolls",
+    description: "Heavy-duty strapping rolls for securing heavy packages and pallets.",
+    features: ["High tensile strength", "Durable", "Professional bundling"],
+    image: strappingRolls,
   },
 ];
 
 const Products = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <Layout>
       {/* Hero Section */}
@@ -102,7 +128,7 @@ const Products = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 pb-32">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {productCategories.map((product) => (
               <ProductCard
                 key={product.id}
@@ -110,6 +136,7 @@ const Products = () => {
                 title={product.title}
                 description={product.description}
                 features={product.features}
+                image={product.image}
                 icon={<Package className="w-6 h-6 text-primary" />}
               />
             ))}
@@ -139,9 +166,6 @@ const Products = () => {
           </div>
         </div>
       </section>
-
-      {/* Cart Summary */}
-      <CartSummary />
     </Layout>
   );
 };

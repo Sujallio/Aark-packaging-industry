@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Target, Eye, Heart, ArrowRight } from "lucide-react";
 import Layout from "@/components/layout/Layout";
@@ -34,6 +35,10 @@ const milestones = [
 ];
 
 const About = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  
   return (
     <Layout>
       {/* Hero Section */}

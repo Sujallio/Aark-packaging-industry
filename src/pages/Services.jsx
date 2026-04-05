@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Factory, Truck, Palette, Wrench, ArrowRight, CheckCircle } from "lucide-react";
 import Layout from "@/components/layout/Layout";
@@ -67,6 +68,9 @@ const additionalServices = [
 ];
 
 const Services = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Layout>
       {/* Hero Section */}
