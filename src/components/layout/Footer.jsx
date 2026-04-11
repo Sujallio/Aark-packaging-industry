@@ -91,9 +91,19 @@ const Footer = () => {
             <p className="text-sm opacity-60">
               © {new Date().getFullYear()} AARK Packaging Industries. All rights reserved.
             </p>
-            <p className="text-sm opacity-60">
-              Serving Maharashtra with quality packaging solutions
-            </p>
+            <div className="flex items-center gap-4">
+              <p className="text-sm opacity-60">
+                Serving Maharashtra with quality packaging solutions
+              </p>
+              <a
+                href="http://localhost:5173/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors text-sm font-medium"
+              >
+                ERP Login →
+              </a>
+            </div>
           </div>
         </div>
       </div>
