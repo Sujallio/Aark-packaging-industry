@@ -1,17 +1,15 @@
 import { useState, useEffect } from 'react'
-import { invoiceService, customerService } from '../services/supabaseService'
+import { invoiceService } from '../services/supabaseService'
 import { useAuth } from '../context/AuthContext'
 import InvoiceOCR from '../components/InvoiceOCR'
 
 export default function Invoices() {
   const [invoices, setInvoices] = useState([])
-  const [customers, setCustomers] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [showForm, setShowForm] = useState(false)
   const [showOCR, setShowOCR] = useState(false)
   const [formData, setFormData] = useState({
-    customer_id: '',
     invoice_date: new Date().toISOString().split('T')[0],
     due_date: '',
     items: [{ description: '', quantity: '', unit_price: '' }],
@@ -25,12 +23,8 @@ export default function Invoices() {
     const fetchData = async () => {
       try {
         setLoading(true)
-        const [invoicesData, customersData] = await Promise.all([
-          invoiceService.getAll(),
-          customerService.getAll(),
-        ])
+        const invoicesData = await invoiceService.getAll()
         setInvoices(invoicesData)
-        setCustomers(customersData)
       } catch (error) {
         setError(error.message)
       } finally {
@@ -57,7 +51,6 @@ export default function Invoices() {
 
       const invoice = await invoiceService.create({
         invoice_number: `INV-${Date.now()}`,
-        customer_id: parseInt(formData.customer_id),
         subtotal,
         tax_amount: parseFloat(formData.tax_amount) || 0,
         discount_amount: parseFloat(formData.discount_amount) || 0,
@@ -69,7 +62,6 @@ export default function Invoices() {
       })
 
       setFormData({
-        customer_id: '',
         invoice_date: new Date().toISOString().split('T')[0],
         due_date: '',
         items: [{ description: '', quantity: '', unit_price: '' }],
@@ -161,23 +153,6 @@ export default function Invoices() {
             gap: '16px',
             marginBottom: '16px'
           }}>
-            <select
-              value={formData.customer_id}
-              onChange={(e) => setFormData({ ...formData, customer_id: e.target.value })}
-              style={{
-                border: '1px solid #d1d5db',
-                borderRadius: '8px',
-                padding: '12px',
-                fontSize: '14px',
-                outline: 'none'
-              }}
-              required
-            >
-              <option value="">Select Customer</option>
-              {customers.map(c => (
-                <option key={c.id} value={c.id}>{c.name}</option>
-              ))}
-            </select>
             <input
               type="date"
               value={formData.invoice_date}
