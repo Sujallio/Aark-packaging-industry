@@ -16,10 +16,10 @@ export function AuthProvider({ children }) {
     // Check if user is already logged in
     const checkUser = async () => {
       try {
-        // Add timeout to session check to prevent hanging
+        // Add shorter timeout for production (Vercel) - show login page faster
         const sessionPromise = supabase.auth.getSession()
         const timeoutPromise = new Promise((resolve) => 
-          setTimeout(() => resolve({ data: { session: null }, error: null }), 3000)
+          setTimeout(() => resolve({ data: { session: null }, error: null }), 1000)
         )
         
         const { data: { session }, error: sessionError } = await Promise.race([
