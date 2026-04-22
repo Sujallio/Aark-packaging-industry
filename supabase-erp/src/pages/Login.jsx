@@ -4,8 +4,8 @@ import { useAuth } from '../context/AuthContext'
 import { supabase } from '../lib/supabaseClient'
 
 export default function Login() {
-  const [email, setEmail] = useState('owner@aark.com')
-  const [password, setPassword] = useState('Owner@123456')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const navigate = useNavigate()
