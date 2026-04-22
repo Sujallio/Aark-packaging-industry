@@ -173,9 +173,9 @@ export default function Login() {
           fontSize: '14px',
           color: '#4b5563'
         }}>
-          <p style={{ fontWeight: '600', marginBottom: '8px' }}>🔐 Owner Credentials (Pre-filled):</p>
-          <p><strong>Email:</strong> owner@aark.com</p>
-          <p><strong>Password:</strong> Owner@123456</p>
+         {/* <p style={{ fontWeight: '600', marginBottom: '8px' }}>🔐 Owner Credentials (Pre-filled):</p> */}
+          {/* <p><strong>Email:</strong> owner@aark.com</p> */}
+          {/* <p><strong>Password:</strong> Owner@123456</p> */}
           <p style={{ marginTop: '12px', fontSize: '12px', color: '#6b7280', fontStyle: 'italic' }}>
             Only authorized company owners can access this system
           </p>
