@@ -101,7 +101,7 @@ export default function Login() {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="owner@aark.com"
+              placeholder="email"
               autoComplete="email"
               style={{
                 width: '100%',
