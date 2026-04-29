@@ -344,36 +344,6 @@ export const invoiceService = {
 
     if (error) throw error
   },
-
-  async uploadInvoiceImage(invoiceId, file) {
-    const fileName = `invoice-${invoiceId}-${Date.now()}.jpg`
-    const { data, error } = await supabase.storage
-      .from('invoices')
-      .upload(fileName, file)
-
-    if (error) throw error
-    return data
-  },
-
-  async getInvoiceImageUrl(path) {
-    const { data } = supabase.storage
-      .from('invoices')
-      .getPublicUrl(path)
-
-    return data.publicUrl
-  },
-
-  async updateOcrData(id, ocrData) {
-    const { data, error } = await supabase
-      .from('invoices')
-      .update({ ocr_data: ocrData })
-      .eq('id', id)
-      .select()
-      .single()
-
-    if (error) throw error
-    return data
-  },
 }
 
 // ============ PAYMENTS SERVICE ============

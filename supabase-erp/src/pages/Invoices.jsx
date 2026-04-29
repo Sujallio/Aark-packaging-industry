@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import { invoiceService } from '../services/supabaseService'
 import { useAuth } from '../context/AuthContext'
-import InvoiceOCR from '../components/InvoiceOCR'
 
 export default function Invoices() {
   const [invoices, setInvoices] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [showForm, setShowForm] = useState(false)
-  const [showOCR, setShowOCR] = useState(false)
   const [formData, setFormData] = useState({
     invoice_date: new Date().toISOString().split('T')[0],
     due_date: '',
@@ -89,23 +87,6 @@ export default function Invoices() {
         <h1 style={{ fontSize: '36px', fontWeight: 'bold', color: '#1f2937' }}>📄 Invoices</h1>
         <div style={{ display: 'flex', gap: '12px' }}>
           <button
-            onClick={() => setShowOCR(!showOCR)}
-            style={{
-              backgroundColor: showOCR ? '#6b7280' : '#D4A574',
-              color: 'white',
-              padding: '10px 16px',
-              borderRadius: '8px',
-              border: 'none',
-              fontWeight: '600',
-              cursor: 'pointer',
-              fontSize: '14px'
-            }}
-            onMouseEnter={(e) => e.target.style.opacity = '0.9'}
-            onMouseLeave={(e) => e.target.style.opacity = '1'}
-          >
-            {showOCR ? '❌ Cancel' : '📸 OCR'}
-          </button>
-          <button
             onClick={() => setShowForm(!showForm)}
             style={{
               backgroundColor: showForm ? '#6b7280' : '#8B3A3A',
@@ -136,8 +117,6 @@ export default function Invoices() {
           ❌ {error}
         </div>
       )}
-
-      {showOCR && <InvoiceOCR onClose={() => setShowOCR(false)} />}
 
       {showForm && (
         <form onSubmit={handleSubmit} style={{
