@@ -2,27 +2,20 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "routes": [
+  "trailingSlash": false,
+  "rewrites": [
     {
-      "src": "^/assets/(.*)$",
-      "dest": "/assets/$1"
+      "source": "/erp/:path*",
+      "destination": "/erp/index.html"
     },
     {
-      "src": "^/erp/assets/(.*)$",
-      "dest": "/erp/assets/$1"
-    },
-    {
-      "src": "^/erp/.*",
-      "dest": "/erp/index.html"
-    },
-    {
-      "src": "^/.*",
-      "dest": "/index.html"
+      "source": "/:path*",
+      "destination": "/index.html"
     }
   ],
   "headers": [
     {
-      "source": "/assets/(.*)",
+      "source": "/assets/:path*",
       "headers": [
         {
           "key": "Cache-Control",
@@ -31,7 +24,7 @@
       ]
     },
     {
-      "source": "/erp/assets/(.*)",
+      "source": "/erp/assets/:path*",
       "headers": [
         {
           "key": "Cache-Control",
