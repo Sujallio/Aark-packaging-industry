@@ -2,6 +2,16 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/erp/(?!assets).*",
+      "destination": "/erp/index.html"
+    },
+    {
+      "source": "/(?!assets|erp).*",
+      "destination": "/index.html"
+    }
+  ],
   "headers": [
     {
       "source": "/assets/(.*)",
