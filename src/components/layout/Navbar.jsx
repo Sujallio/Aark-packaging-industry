@@ -54,6 +54,14 @@ const Navbar = () => {
               <Phone className="w-4 h-4" />
               +91 7058017626
             </a>
+            <a
+              href="https://aark-packaging-industry-erp.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm font-medium px-3 py-2 text-primary border border-primary rounded hover:bg-primary/10 transition-colors"
+            >
+              ERP Login
+            </a>
             <Button asChild>
               <Link to="/contact">Get Quote</Link>
             </Button>
@@ -90,6 +98,14 @@ const Navbar = () => {
               <a href="tel:+917058017626" className="flex items-center gap-2 text-muted-foreground py-2">
                 <Phone className="w-4 h-4" />
                 +91 7058017626
+              </a>
+              <a
+                href="https://aark-packaging-industry-erp.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm font-medium px-3 py-2 text-primary border border-primary rounded hover:bg-primary/10 transition-colors block text-center"
+              >
+                ERP Login
               </a>
               <Button asChild className="mt-2">
                 <Link to="/contact" onClick={() => setIsOpen(false)}>

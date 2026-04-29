@@ -96,7 +96,7 @@ const Footer = () => {
                 Serving Maharashtra with quality packaging solutions
               </p>
               <a
-                href="https://aark-packaging-industry-tcii.vercel.app/"
+                href="https://aark-packaging-industry-erp.vercel.app/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-3 py-1 bg-primary text-primary-foreground rounded hover:bg-primary/90 transition-colors text-sm font-medium"
