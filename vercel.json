@@ -2,14 +2,22 @@
   "version": 2,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "rewrites": [
+  "routes": [
     {
-      "source": "/erp/(?!assets).*",
-      "destination": "/erp/index.html"
+      "src": "^/assets/(.*)$",
+      "dest": "/assets/$1"
     },
     {
-      "source": "/(?!assets|erp).*",
-      "destination": "/index.html"
+      "src": "^/erp/assets/(.*)$",
+      "dest": "/erp/assets/$1"
+    },
+    {
+      "src": "^/erp/.*",
+      "dest": "/erp/index.html"
+    },
+    {
+      "src": "^/.*",
+      "dest": "/index.html"
     }
   ],
   "headers": [
@@ -31,6 +39,5 @@
         }
       ]
     }
-  ],
-  "cleanUrls": true
+  ]
 }
